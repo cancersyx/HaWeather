@@ -58,7 +58,7 @@ public class HaWeatherDB {
      * @return
      */
     public List<Province> loadProvinces(){
-        List<Province> provinces = new ArrayList<>();
+        List<Province> list = new ArrayList<>();
         Cursor cursor = db.query("Province",null,null,null,null,null,null);
         if (cursor.moveToFirst()){
             do {
@@ -66,10 +66,10 @@ public class HaWeatherDB {
                 province.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 province.setProvinceName(cursor.getString(cursor.getColumnIndex("province_name")));
                 province.setProvinceCode(cursor.getString(cursor.getColumnIndex("province_code")));
-                provinces.add(province);
+                list.add(province);
             }while (cursor.moveToNext());
         }
-        return provinces;
+        return list;
     }
 
     /**
@@ -92,7 +92,7 @@ public class HaWeatherDB {
      * @return
      */
     public List<City> loadCities(int provinceId){
-        List<City> cities = new ArrayList<>();
+        List<City> list = new ArrayList<>();
         Cursor cursor = db.query("City",null,"province_id = ?",
                 new String[]{String.valueOf(provinceId)},null,null,null);
         if (cursor.moveToFirst()){
@@ -102,10 +102,10 @@ public class HaWeatherDB {
                 city.setCityName(cursor.getString(cursor.getColumnIndex("city_name")));
                 city.setCityCode(cursor.getString(cursor.getColumnIndex("city_code")));
                 city.setProvinceId(provinceId);
-                cities.add(city);
+                list.add(city);
             }while (cursor.moveToNext());
         }
-        return cities;
+        return list;
     }
 
     /**
@@ -118,7 +118,7 @@ public class HaWeatherDB {
             values.put("country_name",country.getCountryName());
             values.put("country_code",country.getCountryCode());
             values.put("city_id",country.getCityId());
-            db.insert("City",null,values);
+            db.insert("Country",null,values);
         }
     }
 
@@ -128,7 +128,7 @@ public class HaWeatherDB {
      * @return
      */
     public List<Country> loadCountries(int cityId){
-        List<Country> countries = new ArrayList<>();
+        List<Country> list = new ArrayList<>();
         Cursor cursor = db.query("Country",null,"city_id = ? ",
                 new String[]{String.valueOf(cityId)},null,null,null );
         if (cursor.moveToFirst()){
@@ -138,10 +138,10 @@ public class HaWeatherDB {
                 country.setCountryName(cursor.getString(cursor.getColumnIndex("country_name")));
                 country.setCountryCode(cursor.getString(cursor.getColumnIndex("country_code")));
                 country.setCityId(cityId);
-                countries.add(country);
+                list.add(country);
             }while (cursor.moveToNext());
         }
-        return countries;
+        return list;
     }
 
 }

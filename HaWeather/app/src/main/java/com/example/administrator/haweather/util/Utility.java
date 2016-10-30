@@ -37,7 +37,7 @@ public class Utility {
     /**
      * 解析和处理服务器返回的市级数据
      */
-    public synchronized static boolean handleCitiesResponse(HaWeatherDB haWeatherDB,
+    public static boolean handleCitiesResponse(HaWeatherDB haWeatherDB,
                                                             String response, int provinceId) {
         if (!TextUtils .isEmpty(response)){
             String[] allCities = response.split(",");
@@ -60,7 +60,7 @@ public class Utility {
     /**
      * 解析和处理服务器返回的县级数据
      */
-    public synchronized static boolean handleCountriesResponse(HaWeatherDB haWeatherDB ,
+    public static boolean handleCountriesResponse(HaWeatherDB haWeatherDB ,
                                                                String response,int cityId){
             if (!TextUtils.isEmpty(response)){
                 String[] allCountries = response.split(",");
