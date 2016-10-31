@@ -9,7 +9,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -22,6 +22,8 @@
         </activity>
 
         <activity android:name=".activity.WeatherActivity"/>
-    </application>
 
+        <receiver android:name=".receiver.AutoUpdateReceiver"/>
+        <service android:name=".service.AutoUpdateService"/>
+    </application>
 </manifest>

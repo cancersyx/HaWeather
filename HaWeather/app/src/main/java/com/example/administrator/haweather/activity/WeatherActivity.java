@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.administrator.haweather.R;
+import com.example.administrator.haweather.service.AutoUpdateService;
 import com.example.administrator.haweather.util.HttpCallbackListener;
 import com.example.administrator.haweather.util.HttpUtil;
 import com.example.administrator.haweather.util.Utility;
@@ -161,6 +162,8 @@ public class WeatherActivity extends Activity {
         weatherInfoLayout.setVisibility(View.VISIBLE);
         cityNameText.setVisibility(View.VISIBLE);
 
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 
 
